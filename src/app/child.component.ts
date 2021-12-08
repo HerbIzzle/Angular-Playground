@@ -6,17 +6,24 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
     <div class ='child'>
     <p>
      this child recieves info from its {{name}}
-    <form #form="ngForm">
+    <form>
       <label for="test">add a child to parent</label>
-      <input id="test" name="test" #htmlInputElement >
+      <input
+            id="test"
+            name="test"
+            #htmlInputElement
+            (keyup)="keyUpToChild(htmlInputElement.value)"
+          >
         <button
-          *ngIf="form.valid"
+
           type="button"
           (click)="addToParent(htmlInputElement.value)"
 
         >add me</button>
 
-      <button (click)="delete()">Delete item with an Output!</button>
+      <button (click)="delete()"
+
+      >Delete item with an Output!</button>
     </form>
  <hr>
 
@@ -30,6 +37,7 @@ export class ChildComponent implements OnInit {
 @Input() name = '';
 @Output() listOfThings = new EventEmitter<string>();
   @Output() deleteRequest = new EventEmitter();
+  @Output() forKeyUp = new EventEmitter<string>();
 
   refresh :string = '';
 
@@ -37,7 +45,8 @@ addToParent(name: string){
   this.listOfThings.emit(name);
 }
 
-addLastItemToChild(name: string){
+keyUpToChild(keyUp: string){
+  this.forKeyUp.emit(keyUp)
 
 }
 

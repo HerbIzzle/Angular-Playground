@@ -12,22 +12,31 @@ import {Component} from '@angular/core';
         <li *ngFor="let a of arrayOfThings">{{a}}
         </li>
       </ul>
+<hr>
+      <div> Key Up : {{keyUp}}</div>
+      <hr>
 
       <button (click)="removeFromList()">remove item</button>
 
       <app-child [name]="parentName"
                  (listOfThings)="addSomething($event)"
                  (deleteRequest)="removeWithChild()"
+                 (forKeyUp)="addKeyUp($event)"
       ></app-child>
-      <app-ng-serve-child [lastEntry]="arrayOfThings[arrayOfThings.length -1]"></app-ng-serve-child>
+      <app-ng-serve-child
+                [lastEntry]="arrayOfThings[arrayOfThings.length -1]"
+                [keyUpToChild]="keyUp"
+      ></app-ng-serve-child>
 
-
+      <app-two-way-binding></app-two-way-binding>
+      
     </div>
   `,
   styles: []
 })
 export class AppComponent {
   parentName = "parent";
+  keyUp ='';
 
   arrayOfThings = ['some string', 'another strong', 'last string i promisse'];
 
@@ -41,5 +50,9 @@ export class AppComponent {
 
   removeWithChild(){
     this.arrayOfThings.pop();
+  }
+
+  addKeyUp(child: string){
+    this.keyUp = child;
   }
 }
