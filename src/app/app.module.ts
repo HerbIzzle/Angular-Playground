@@ -9,6 +9,7 @@ import { TwoWayBindingComponent } from './BindingPlayGround/two-way-binding.comp
 import {RouterModule} from "@angular/router";
 import { BindingPlayGroundComponent } from './BindingPlayGround/binding-play-ground.component';
 import { DashboardComponent } from './Dashboard/dashboard.component';
+import { PrimeNgComponent } from './prime-ng/prime-ng.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,15 @@ import { DashboardComponent } from './Dashboard/dashboard.component';
      NgServeChildComponent,
      TwoWayBindingComponent,
      BindingPlayGroundComponent,
-     DashboardComponent
+     DashboardComponent,
+     PrimeNgComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
       { path: 'bindingStuff/:id', component: BindingPlayGroundComponent },
+      { path: 'primeng/:id', component: PrimeNgComponent },
       { path: 'dashboard/:id', component: DashboardComponent },
     ])
   ],

@@ -4,14 +4,14 @@ import {Component} from '@angular/core';
   selector: 'app-root',
   template: `
 <h1> Angular Playground </h1>
-<nav>
 
+<nav>
   <a [routerLink]="[ 'dashboard' , 1 ]" >Dashboard</a>
+  <a [routerLink]="[ 'primeng' , 1 ]" >Prime NG</a>
   <a [routerLink]="[ 'bindingStuff' , 1 ]" >Binding Stuff</a>
 
-
-
 </nav>
+
       <router-outlet></router-outlet>
 
   `,
@@ -19,6 +19,7 @@ import {Component} from '@angular/core';
 
     `h1 {
     margin-bottom: 0;
+      font-size: 2.5rem;
   }
   nav a {
     padding: 1rem;
