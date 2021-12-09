@@ -3,56 +3,41 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <div class="parent">
+<h1> Angular Playground </h1>
+<nav>
 
-      <h1>This is the parent component</h1>
+  <a [routerLink]="[ 'dashboard' , 1 ]" >Dashboard</a>
+  <a [routerLink]="[ 'bindingStuff' , 1 ]" >Binding Stuff</a>
 
-      <h3>{{parentName}}</h3>
-      <ul>
-        <li *ngFor="let a of arrayOfThings">{{a}}
-        </li>
-      </ul>
-<hr>
-      <div> Key Up : {{keyUp}}</div>
-      <hr>
 
-      <button (click)="removeFromList()">remove item</button>
 
-      <app-child [name]="parentName"
-                 (listOfThings)="addSomething($event)"
-                 (deleteRequest)="removeWithChild()"
-                 (forKeyUp)="addKeyUp($event)"
-      ></app-child>
-      <app-ng-serve-child
-                [lastEntry]="arrayOfThings[arrayOfThings.length -1]"
-                [keyUpToChild]="keyUp"
-      ></app-ng-serve-child>
+</nav>
+      <router-outlet></router-outlet>
 
-      <app-two-way-binding></app-two-way-binding>
-      
-    </div>
   `,
-  styles: []
+  styles: [
+
+    `h1 {
+    margin-bottom: 0;
+  }
+  nav a {
+    padding: 1rem;
+    margin: 20px 20px;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #e8e8e8;
+    color: #3d3d3d;
+    border-radius: 4px;
+
+  }
+  nav a:hover {
+    color: white;
+    background-color: #42545C;
+  }
+  nav a.active {
+    background-color: black;
+  }`]
 })
 export class AppComponent {
-  parentName = "parent";
-  keyUp ='';
 
-  arrayOfThings = ['some string', 'another strong', 'last string i promisse'];
-
-  addSomething(childThings: string){
-  this.arrayOfThings.push(childThings);
-}
-
-  removeFromList(){
-    this.arrayOfThings.pop();
-  }
-
-  removeWithChild(){
-    this.arrayOfThings.pop();
-  }
-
-  addKeyUp(child: string){
-    this.keyUp = child;
-  }
 }

@@ -1,3 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 .parent{ border: solid; align-items: center}
 .child{border: solid}
+
+button {padding: 10px 10px 10px 10px; margin: 10px 10px 10px 10px }
+.child label {padding-right: 10px}

@@ -3,6 +3,7 @@ import {Component, Input, OnInit} from '@angular/core';
 @Component({
   selector: 'app-ng-serve-child',
   template: `
+    <div class="child">
     <ul>
       <li> The last addition to the list : {{lastEntry}}
       </li>
@@ -11,6 +12,7 @@ import {Component, Input, OnInit} from '@angular/core';
       <div>
         Key up from Child To Parent To Child : {{keyUpToChild}}
       </div>
+    </div>
   `,
   styles: [
   ]

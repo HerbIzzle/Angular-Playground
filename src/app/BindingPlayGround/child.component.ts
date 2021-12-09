@@ -14,26 +14,29 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
             #htmlInputElement
             (keyup)="keyUpToChild(htmlInputElement.value)"
           >
+      <br>
         <button
 
           type="button"
           (click)="addToParent(htmlInputElement.value)"
 
-        >add me</button>
-
+        >add to Parent List</button>
+<br>
       <button (click)="delete()"
 
-      >Delete item with an Output!</button>
+      >Delete Item in Parent from Child Component</button>
     </form>
  <hr>
-
     </div>
+
+
   `,
-  styles: [''
+  styles: [
   ]
 })
 export class ChildComponent implements OnInit {
 
+twoWayKeyUp = '';
 @Input() name = '';
 @Output() listOfThings = new EventEmitter<string>();
   @Output() deleteRequest = new EventEmitter();

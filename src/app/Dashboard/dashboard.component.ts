@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-two-way-binding',
+  selector: 'app-dashboard',
   template: `
     <p>
-      two-way-binding works!
+      dashboard works!
     </p>
   `,
   styles: [
   ]
 })
-export class TwoWayBindingComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   constructor() { }
 
