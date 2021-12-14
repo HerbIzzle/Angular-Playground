@@ -5,12 +5,16 @@ import {Component} from '@angular/core';
   template: `
 <h1> Angular Playground </h1>
 
+
+
+
 <nav>
   <a [routerLink]="[ 'dashboard' , 1 ]" >Dashboard</a>
-  <a [routerLink]="[ 'primeng' , 1 ]" >Prime NG</a>
+  <a [routerLink]="[ 'materialui' , 1 ]" >Material Ui</a>
   <a [routerLink]="[ 'bindingStuff' , 1 ]" >Binding Stuff</a>
 
 </nav>
+
 
       <router-outlet></router-outlet>
 
