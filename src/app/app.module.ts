@@ -23,6 +23,8 @@ import {MatIconModule} from "@angular/material/icon";
 import { SidenavListComponent } from './MaterialUI/sidenav-list.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { CostumerManager } from './Costumer Manager/costumer-manager';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 
 @NgModule({
@@ -46,19 +48,23 @@ import { CostumerManager } from './Costumer Manager/costumer-manager';
     MatTableModule,
     RouterModule.forRoot([
       {path: 'bindingStuff/:id', component: BindingPlayGroundComponent},
-      {path: 'materialui',
+      {
+        path: 'materialui',
         component: MaterialParent,
 
-        children: [{ path : 'usertable' , component : CostumerManager}]} ,
+        children: [{path: 'usertable', component: CostumerManager}]
+      },
       {path: 'dashboard/:id', component: DashboardComponent},
-     // {path: 'usertable', component: CostumerManager , outlet:'child'},
+      // {path: 'usertable', component: CostumerManager , outlet:'child'},
     ]),
     MatListModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
