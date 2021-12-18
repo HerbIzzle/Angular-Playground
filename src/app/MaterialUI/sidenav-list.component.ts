@@ -7,7 +7,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
       <a mat-list-item routerLink="/home" (click)="onSidenavClose()">
         <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
       </a>
-      <a mat-list-item routerLink="/owner" (click)="onSidenavClose()">
+      <a mat-list-item routerLink="/usertable" (click)="onSidenavClose()">
         <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Owner Actions</span>
       </a>
       <a mat-list-item routerLink="#" (click)="onSidenavClose()">
@@ -19,7 +19,6 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
       <a matline>Example</a>
     </mat-list-item>
     <mat-menu #menu="matMenu">
-      <p>This is wher?</p>
       <button mat-menu-item (click)="onSidenavClose()">View profile</button>
       <button mat-menu-item (click)="onSidenavClose()">Add contact</button>
     </mat-menu>

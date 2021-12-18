@@ -9,14 +9,13 @@ import {Component} from '@angular/core';
 
 
 <nav>
-  <a [routerLink]="[ 'dashboard' , 1 ]" >Dashboard</a>
-  <a [routerLink]="[ 'materialui' , 1 ]" >Material Ui</a>
+  <a [routerLink]="['dashboard' , 1 ]" >Dashboard</a>
+  <a [routerLink]="['materialui']" >Material Ui</a>
   <a [routerLink]="[ 'bindingStuff' , 1 ]" >Binding Stuff</a>
 
 </nav>
 
-
-      <router-outlet></router-outlet>
+      <router-outlet ></router-outlet>
 
   `,
   styles: [

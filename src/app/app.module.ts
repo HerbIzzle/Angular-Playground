@@ -10,7 +10,7 @@ import { TwoWayBindingComponent } from './BindingPlayGround/two-way-binding.comp
 import {RouterModule} from "@angular/router";
 import { BindingPlayGroundComponent } from './BindingPlayGround/binding-play-ground.component';
 import { DashboardComponent } from './Dashboard/dashboard.component';
-import { MaterialUiComponent } from './MaterialUI/material-ui-component';
+import { MaterialParent } from './MaterialUI/material-parent';
 import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
@@ -22,6 +22,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import { SidenavListComponent } from './MaterialUI/sidenav-list.component';
 import {MatMenuModule} from "@angular/material/menu";
+import { CostumerManager } from './Costumer Manager/costumer-manager';
 
 
 @NgModule({
@@ -32,9 +33,10 @@ import {MatMenuModule} from "@angular/material/menu";
      TwoWayBindingComponent,
      BindingPlayGroundComponent,
      DashboardComponent,
-     MaterialUiComponent,
+     MaterialParent,
      HeaderComponent,
-     SidenavListComponent
+     SidenavListComponent,
+     CostumerManager
   ],
   imports: [
     BrowserModule,
@@ -44,11 +46,15 @@ import {MatMenuModule} from "@angular/material/menu";
     MatTableModule,
     RouterModule.forRoot([
       {path: 'bindingStuff/:id', component: BindingPlayGroundComponent},
-      {path: 'materialui/:id', component: MaterialUiComponent},
+      {path: 'materialui',
+        component: MaterialParent,
+
+        children: [{ path : 'usertable' , component : CostumerManager}]} ,
       {path: 'dashboard/:id', component: DashboardComponent},
+     // {path: 'usertable', component: CostumerManager , outlet:'child'},
     ]),
-    BrowserAnimationsModule,
     MatListModule,
+    BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,

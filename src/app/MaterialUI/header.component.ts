@@ -13,23 +13,22 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
       </div>
       <div>
 
-        <a routerLink="/home">Owner Account</a>
+        <a [routerLink]="['usertable']" >Kundenverwaltung</a>
+
       </div>
       <div class="sexz">
         <ul class="navigation-items">
           <li>
-            <a routerLink="/dashboard">Owner-Account</a>
+            <a routerLink="usertable">Active Users</a>
           </li>
           <li>
-            <a routerLink="/owner">Owner Actions</a>
-          </li>
-          <li>
-            <a routerLink="/account">Account Actions</a>
+            <a routerLink="/owner">All Users</a>
           </li>
         </ul>
-
       </div>
     </mat-toolbar>
+
+
   `,
   styles: [
     ` a {
@@ -76,7 +75,7 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  public onToggleSidenav = () => {
+  public onToggleSidenav() {
     this.sidenavToggle.emit();
 
   }

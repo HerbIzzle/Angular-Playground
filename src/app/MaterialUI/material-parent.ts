@@ -8,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 
       <mat-sidenav-container>
         <mat-sidenav #sidenav role="navigation">
-          this is a place for us to add side-nav code
+          <app-sidenav-list></app-sidenav-list>
         </mat-sidenav>
         <mat-sidenav-content>
           <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-          <main>
-            <router-outlet></router-outlet>
-          </main>
+
+
+              <router-outlet></router-outlet>
+
         </mat-sidenav-content>
       </mat-sidenav-container>
   `,
@@ -29,10 +30,11 @@ import { Component, OnInit } from '@angular/core';
 
     main {
       padding: 10px;
+      background: green;
     }`
   ]
 })
-export class MaterialUiComponent implements OnInit {
+export class MaterialParent implements OnInit {
 
 dataArray: string[] = ['test1' , 'test2', 'test3']
 
