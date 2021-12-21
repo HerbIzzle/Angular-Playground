@@ -84,13 +84,9 @@ export class UserTable implements OnInit {
   userList :User[] = [];
   displayedColumns: string[] = [ 'id', 'firstName', 'lastName', 'birthDate', 'activated'];
   dataSource: any;
-  searchTerm = '';
 
   ngOnInit(): void {
     this.refresh();
-   // this.userservice.retrieveAll()
-   //   .then(userList => { this.dataSource = new MatTableDataSource(userList);
-   //     if (this.sort){this.dataSource.sort = this.sort}});
   }
 
   refresh(): void {

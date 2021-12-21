@@ -33,7 +33,6 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSortModule} from "@angular/material/sort";
 import {CommonModule} from "@angular/common";
-import { SearchFilterPipe } from './search-filter.pipe';
 
 
 @NgModule({
@@ -48,8 +47,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
      HeaderComponent,
      SidenavListComponent,
      UserTable,
-     AddUserDialogComponent,
-     SearchFilterPipe
+     AddUserDialogComponent
   ],
   imports: [
     BrowserModule,
