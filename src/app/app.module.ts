@@ -20,11 +20,20 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import { HeaderComponent } from './MaterialUI/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
-import { SidenavListComponent } from './MaterialUI/sidenav-list.component';
+import { SidenavListComponent } from './MaterialUI/Material UI Components/sidenav-list.component';
 import {MatMenuModule} from "@angular/material/menu";
-import { CostumerManager } from './Costumer Manager/costumer-manager';
-import {MatFormFieldModule} from "@angular/material/form-field";
+import { UserTable } from './MaterialUI/User Table/user-table';
+import {MatFormFieldControl, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
+import { AddUserDialogComponent } from './MaterialUI/Material UI Components/UserDialog/add-user-dialog.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSortModule} from "@angular/material/sort";
+import {CommonModule} from "@angular/common";
+import { SearchFilterPipe } from './search-filter.pipe';
 
 
 @NgModule({
@@ -38,7 +47,9 @@ import {MatInputModule} from "@angular/material/input";
      MaterialParent,
      HeaderComponent,
      SidenavListComponent,
-     CostumerManager
+     UserTable,
+     AddUserDialogComponent,
+     SearchFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -52,7 +63,7 @@ import {MatInputModule} from "@angular/material/input";
         path: 'materialui',
         component: MaterialParent,
 
-        children: [{path: 'usertable', component: CostumerManager}]
+        children: [{path: 'usertable', component: UserTable}]
       },
       {path: 'dashboard/:id', component: DashboardComponent},
       // {path: 'usertable', component: CostumerManager , outlet:'child'},
@@ -64,7 +75,14 @@ import {MatInputModule} from "@angular/material/input";
     MatIconModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSortModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
