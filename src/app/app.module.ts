@@ -10,29 +10,30 @@ import { TwoWayBindingComponent } from './BindingPlayGround/two-way-binding.comp
 import {RouterModule} from "@angular/router";
 import { BindingPlayGroundComponent } from './BindingPlayGround/binding-play-ground.component';
 import { DashboardComponent } from './Dashboard/dashboard.component';
-import { MaterialParent } from './MaterialUI/material-parent';
+import { NavigationMenu } from './MaterialUI/Navigation/navigation-menu';
 import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
 import { MatTableModule} from "@angular/material/table";
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import { HeaderComponent } from './MaterialUI/header.component';
+import { HeaderComponent } from './MaterialUI/Navigation/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
-import { SidenavListComponent } from './MaterialUI/Material UI Components/sidenav-list.component';
+import { SidenavListComponent } from './MaterialUI/Navigation/sidenav-list.component';
 import {MatMenuModule} from "@angular/material/menu";
-import { UserTable } from './MaterialUI/User Table/user-table';
+import { UserTableComponent } from './MaterialUI/User Table/user-table.component';
 import {MatFormFieldControl, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
-import { AddUserDialogComponent } from './MaterialUI/Material UI Components/UserDialog/add-user-dialog.component';
+import { DialogComponent } from './MaterialUI/User Table/UserDialog/dialog.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSortModule} from "@angular/material/sort";
 import {CommonModule} from "@angular/common";
+import {EditDialogComponent} from "./MaterialUI/User Table/UserDialog/edit-dialog.component";
 
 
 @NgModule({
@@ -43,11 +44,12 @@ import {CommonModule} from "@angular/common";
      TwoWayBindingComponent,
      BindingPlayGroundComponent,
      DashboardComponent,
-     MaterialParent,
+     NavigationMenu,
      HeaderComponent,
      SidenavListComponent,
-     UserTable,
-     AddUserDialogComponent
+     UserTableComponent,
+     DialogComponent,
+     EditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -58,10 +60,10 @@ import {CommonModule} from "@angular/common";
     RouterModule.forRoot([
       {path: 'bindingStuff/:id', component: BindingPlayGroundComponent},
       {
-        path: 'materialui',
-        component: MaterialParent,
+        path: 'customerManagement',
+        component: NavigationMenu,
 
-        children: [{path: 'usertable', component: UserTable}]
+        children: [{path: 'usertable', component: UserTableComponent}]
       },
       {path: 'dashboard/:id', component: DashboardComponent},
       // {path: 'usertable', component: CostumerManager , outlet:'child'},

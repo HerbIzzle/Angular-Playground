@@ -3,5 +3,5 @@ export class User {
   firstName = '';
   lastName = '';
   birthDate = '';
-  isActive?: boolean;
+  activated?: boolean;
 }

@@ -5,12 +5,9 @@ import {Component} from '@angular/core';
   template: `
 <h1> Angular Playground </h1>
 
-
-
-
 <nav>
   <a [routerLink]="['dashboard' , 1 ]" >Dashboard</a>
-  <a [routerLink]="['materialui']" >Material Ui</a>
+  <a [routerLink]="['customerManagement']" >Customer Management</a>
   <a [routerLink]="[ 'bindingStuff' , 1 ]" >Binding Stuff</a>
 
 </nav>
@@ -21,8 +18,8 @@ import {Component} from '@angular/core';
   styles: [
 
     `h1 {
-    margin-bottom: 0;
-      font-size: 2.5rem;
+      margin: 30px 30px;
+      font-size: 3.0rem;
   }
   nav a {
     padding: 1rem;

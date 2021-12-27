@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-  selector: 'app-prime-ng',
+  selector: 'navigation-menu',
   template: `
 
 
@@ -12,7 +12,6 @@ import { Component, OnInit } from '@angular/core';
         </mat-sidenav>
         <mat-sidenav-content>
           <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-
 
               <router-outlet></router-outlet>
 
@@ -34,9 +33,8 @@ import { Component, OnInit } from '@angular/core';
     }`
   ]
 })
-export class MaterialParent implements OnInit {
+export class NavigationMenu implements OnInit {
 
-dataArray: string[] = ['test1' , 'test2', 'test3']
 
   constructor() { }
 
