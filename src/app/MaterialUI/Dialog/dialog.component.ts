@@ -1,48 +1,49 @@
-import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
-import {User} from "../User";
-import {UserService} from "../../../user.service";
+import {Component, OnInit, Output, Input, EventEmitter, Inject} from '@angular/core';
+import {UserService} from "../../user.service";
+import {User} from "../User Table/User";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {DialogComponent} from "./dialog.component";
 
 @Component({
-  selector: 'app-edit-dialog',
+  selector: 'app-add-user-dialog',
   template: `
+
+
     <table class="example-full-width">
       <tr>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Id</mat-label>
-          <input matInput type="number" [(ngModel)]="data.id"  disabled>
+          <input matInput type="number" [(ngModel)]="user.id"  disabled>
         </mat-form-field>
       </tr>
       <tr>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>First Name</mat-label>
-          <input matInput [(ngModel)]="data.firstName">
+          <input matInput [(ngModel)]="user.firstName">
         </mat-form-field>
       </tr>
       <tr>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Last Name</mat-label>
-          <input matInput [(ngModel)]="data.lastName">
+          <input matInput [(ngModel)]="user.lastName">
         </mat-form-field>
       </tr>
       <tr>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Birthdate</mat-label>
-          <input matInput [matDatepicker]="picker" [(ngModel)]="data.birthDate">
+          <input matInput [matDatepicker]="picker" [(ngModel)]="user.birthDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker touchUi #picker></mat-datepicker>
         </mat-form-field>
 
       </tr>
       <tr>
-        <mat-checkbox class="example-margin" [(ngModel)]="data.activated"> Active</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="user.activated"> Active</mat-checkbox>
       </tr>
       <tr>
 
         <mat-dialog-actions align="end">
-          <button mat-button mat-dialog-close="false"> Cancel</button>
-          <button mat-button mat-dialog-close="true" cdkFocusInitial (click)="addUserWithOk() ">Confirm</button>
+          <button mat-button mat-dialog-close>Cancel</button>
+          <button mat-button mat-dialog-close="true" cdkFocusInitial (click)="addUserWithOk() ">Add User</button>
         </mat-dialog-actions>
 
       </tr>
@@ -61,11 +62,12 @@ import {DialogComponent} from "./dialog.component";
   }`
   ]
 })
-export class EditDialogComponent implements OnInit {
+export class DialogComponent implements OnInit {
 
-  @Input() user = new User();
 
-  constructor(private userservice : UserService, @Inject(MAT_DIALOG_DATA) public data:any) {
+@Input() user = new User();
+
+  constructor(private userservice : UserService) {
   }
 
   ngOnInit(): void {
@@ -73,17 +75,13 @@ export class EditDialogComponent implements OnInit {
 
 
   addUserWithOk(){
-    if(this.data.id){
-      this.userservice.update(this.data)
-      this.userservice.retrieveAll();
+    if(this.user.id){
+      this.userservice.update(this.user)
     }
     else{
-      this.userservice.create(this.data)
-      this.userservice.retrieveAll();
+      this.userservice.create(this.user)
     }
   }
 
 
-  finishWithCancel(){
-  }
 }

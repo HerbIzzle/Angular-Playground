@@ -1,14 +1,11 @@
-import {Component, OnInit, Output, ViewChild, EventEmitter, Input} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {User} from "./User";
 import {MatTableDataSource} from "@angular/material/table";
-import {UserService} from "../../user.service";
-import {Observable} from "rxjs";
+import {UserService} from "../../user.service"
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatSort, Sort} from "@angular/material/sort";
-
-import {DialogComponent} from "./UserDialog/dialog.component";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {EditDialogComponent} from "./UserDialog/edit-dialog.component";
+import {FormDialog} from "../Dialog/form-dialog";
 
 
 @Component({
@@ -16,7 +13,7 @@ import {EditDialogComponent} from "./UserDialog/edit-dialog.component";
   template: `
 
     <div>
-      <button mat-raised-button (click)="createCostumer()"
+      <button mat-raised-button (click)="createCustomer()"
       >
         <mat-icon>add</mat-icon>
         Create
@@ -94,7 +91,9 @@ import {EditDialogComponent} from "./UserDialog/edit-dialog.component";
     width: 100%;
   }
 
-  button{margin-left: 12px}
+  button {
+    margin-left: 12px
+  }
 
   mat-form-field {
     margin-left: 12px;
@@ -132,29 +131,28 @@ export class UserTableComponent implements OnInit {
         }
 
         this.dataSource.filterPredicate = (userList: any, filterValue: string) =>
-          userList.firstName
-            .trim()
-            .toLocaleLowerCase().indexOf(filterValue.trim().toLocaleLowerCase()) >= 0 ||
-          userList.lastName
+          (userList.firstName + userList.lastName)
             .trim()
             .toLocaleLowerCase().indexOf(filterValue.trim().toLocaleLowerCase()) >= 0;
-
-        })
+      })
       .catch();
   }
 
 
-  createCostumer() {
-   const dialogConfig = new MatDialogConfig();
-   dialogConfig.disableClose = true;
+  createCustomer(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
 
-    const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+    dialogConfig.data = new User();
+
+    const dialogRef = this.dialog.open(FormDialog, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-     () => this.refresh()
-    );
-  }
+      () => this.refresh()
+    )
 
+
+  }
 
   editCustomer(user: User): void {
 
@@ -165,12 +163,11 @@ export class UserTableComponent implements OnInit {
 
     console.log(dialogConfig.data);
 
-    const dialogRef = this.dialog.open(EditDialogComponent, dialogConfig);
+    const dialogRef = this.dialog.open(FormDialog, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
       () => this.refresh()
     );
-
 
   }
 
@@ -181,12 +178,12 @@ export class UserTableComponent implements OnInit {
     }
   }
 
-  applyFilter(event: Event) {
+  applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue;
   }
 
-  announceSortChange(sortState: Sort) {
+  announceSortChange(sortState: Sort): void {
     // This example uses English messages. If your application supports
     // multiple language, you would internationalize these strings.
     // Furthermore, you can customize the message to add additional
