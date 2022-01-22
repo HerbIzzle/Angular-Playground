@@ -12,7 +12,7 @@ import {Component} from '@angular/core';
 
 </nav>
 
-      <router-outlet ></router-outlet>
+      <router-outlet></router-outlet>
 
   `,
   styles: [

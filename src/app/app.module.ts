@@ -1,7 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
-
 import {AppComponent} from './app.component';
 import {ChildComponent} from './BindingPlayGround/child.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -35,7 +33,9 @@ import {MatSortModule} from "@angular/material/sort";
 import {CommonModule} from "@angular/common";
 import {EditDialogComponent} from "./MaterialUI/Dialog/edit-dialog.component";
 import {FormDialog} from './MaterialUI/Dialog/form-dialog';
-
+import {initializeApp} from "@angular/fire/app";
+import {environment} from "../environments/environment";
+import {AngularFireModule} from "@angular/fire/compat";
 
 @NgModule({
   declarations: [
@@ -86,6 +86,7 @@ import {FormDialog} from './MaterialUI/Dialog/form-dialog';
     MatSortModule,
     CommonModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

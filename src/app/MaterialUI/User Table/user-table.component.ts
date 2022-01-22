@@ -6,6 +6,7 @@ import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatSort, Sort} from "@angular/material/sort";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {FormDialog} from "../Dialog/form-dialog";
+import {FirebaseService} from "../../service/firebase.service";
 
 
 @Component({
@@ -107,7 +108,7 @@ import {FormDialog} from "../Dialog/form-dialog";
 })
 export class UserTableComponent implements OnInit {
 
-  constructor(private userservice: UserService, private _liveAnnouncer: LiveAnnouncer, private dialog: MatDialog) {
+  constructor(private userservice: UserService, private fire:FirebaseService, private _liveAnnouncer: LiveAnnouncer, private dialog: MatDialog) {
   }
 
   @ViewChild(MatSort) sort!: MatSort;
@@ -115,7 +116,6 @@ export class UserTableComponent implements OnInit {
   userList: User[] = [];
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'activated', 'Action'];
   dataSource: any;
-  searchTerm = '';
 
   ngOnInit(): void {
     this.refresh();
@@ -157,8 +157,8 @@ export class UserTableComponent implements OnInit {
   editCustomer(user: User): void {
 
     const dialogConfig = new MatDialogConfig();
-
     dialogConfig.disableClose = true;
+
     dialogConfig.data = user;
 
     console.log(dialogConfig.data);
@@ -176,6 +176,7 @@ export class UserTableComponent implements OnInit {
       this.userservice.delete(user.id!)
         .then(() => this.refresh());
     }
+    this.fire.delete(user.id!);
   }
 
   applyFilter(event: Event): void {

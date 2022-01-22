@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {User} from "./MaterialUI/User Table/User";
 
 
-const USER_RESOURCE_URL : string = 'http://localhost:8080/user';
+const USER_RESOURCE_URL : string = 'http://devbertspringbootderbydb-env.eba-nck4dqqz.eu-central-1.elasticbeanstalk.com/user';
 
 @Injectable({
   providedIn: 'root'
